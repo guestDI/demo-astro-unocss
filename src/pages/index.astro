@@ -14,7 +14,8 @@ import LiveClock from '../components/LiveClock.jsx';
       <section class="mb-8 flex items-center gap-4">
         <span class="inline-block bg-green-500 text-white px-2 py-1 rounded text-xs font-bold">Static</span>
         <span class="inline-block bg-blue-500 text-white px-2 py-1 rounded text-xs font-bold">Dynamic Island</span>
-        <span class="ml-4 text-xs text-gray-500">Legend: Green = Static, Blue = Dynamic (hydrated on client)</span>
+        <span class="inline-block bg-purple-600 text-white px-2 py-1 rounded text-xs font-bold">Client-only</span>
+        <span class="ml-4 text-xs text-gray-500">Legend: Green = Static, Blue = Dynamic Island (SSR+Hydration), Purple = Client-only (no SSR)</span>
       </section>
       <section class="text-center my-12">
         <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -61,8 +62,8 @@ import LiveClock from '../components/LiveClock.jsx';
           </div>
           <div class="grid gap-6 md:grid-cols-2">
             <div class="text-center relative">
-              <span class="absolute top-4 right-4 bg-blue-500 text-white px-2 py-1 rounded text-xs font-bold">Dynamic Island</span>
-              <h3 class="font-bold mb-4 text-gray-800">Live Clock (Dynamic Island)</h3>
+              <span class="absolute top-4 right-4 bg-purple-600 text-white px-2 py-1 rounded text-xs font-bold">Client-only</span>
+              <h3 class="font-bold mb-4 text-gray-800">Live Clock (Client-only)</h3>
               <LiveClock client:only="react" />
             </div>
             <div class="text-center relative">
