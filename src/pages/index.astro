@@ -11,6 +11,11 @@ import LiveClock from '../components/LiveClock.jsx';
   </head>
   <body class="font-sans text-gray-800 bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
     <div class="container mx-auto px-4 py-8 max-w-4xl">
+      <section class="mb-8 flex items-center gap-4">
+        <span class="inline-block bg-green-500 text-white px-2 py-1 rounded text-xs font-bold">Static</span>
+        <span class="inline-block bg-blue-500 text-white px-2 py-1 rounded text-xs font-bold">Dynamic Island</span>
+        <span class="ml-4 text-xs text-gray-500">Legend: Green = Static, Blue = Dynamic (hydrated on client)</span>
+      </section>
       <section class="text-center my-12">
         <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
           SuperFast Hosting
@@ -19,7 +24,8 @@ import LiveClock from '../components/LiveClock.jsx';
       </section>
 
       <section class="grid gap-4 my-12">
-        <div class="bg-white rounded-xl shadow-lg p-6">
+        <div class="bg-white rounded-xl shadow-lg p-6 relative">
+          <span class="absolute top-4 right-4 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold">Static</span>
           <h2 class="text-2xl font-semibold mb-4 text-gray-800">Why Choose Us?</h2>
           <ul class="list-none space-y-3">
             <li class="flex items-center gap-3">
@@ -42,21 +48,25 @@ import LiveClock from '../components/LiveClock.jsx';
         <h2 class="text-3xl font-semibold mb-6 text-center text-gray-800">Static vs Dynamic Rendering in Astro</h2>
         <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
           <div class="grid md:grid-cols-2 gap-6 mb-8">
-            <div class="bg-green-50 rounded-lg p-4 border-l-4 border-green-500">
+            <div class="bg-green-50 rounded-lg p-4 border-l-4 border-green-500 relative">
+              <span class="absolute top-4 right-4 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold">Static</span>
               <h3 class="font-bold text-green-800 mb-2">Static Content</h3>
               <p class="text-green-700">Most of this page is rendered as static HTML at build time for fast load and SEO.</p>
             </div>
-            <div class="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
+            <div class="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500 relative">
+              <span class="absolute top-4 right-4 bg-blue-500 text-white px-2 py-1 rounded text-xs font-bold">Dynamic Island</span>
               <h3 class="font-bold text-blue-800 mb-2">Dynamic Islands</h3>
               <p class="text-blue-700">Interactive components below are loaded as Astro Islands and hydrated on the client.</p>
             </div>
           </div>
           <div class="grid gap-6 md:grid-cols-2">
-            <div class="text-center">
+            <div class="text-center relative">
+              <span class="absolute top-4 right-4 bg-blue-500 text-white px-2 py-1 rounded text-xs font-bold">Dynamic Island</span>
               <h3 class="font-bold mb-4 text-gray-800">Live Clock (Dynamic Island)</h3>
               <LiveClock client:only="react" />
             </div>
-            <div class="text-center">
+            <div class="text-center relative">
+              <span class="absolute top-4 right-4 bg-blue-500 text-white px-2 py-1 rounded text-xs font-bold">Dynamic Island</span>
               <h3 class="font-bold mb-4 text-gray-800">Pricing Calculator (Dynamic Island)</h3>
               <PricingCalculator client:load />
             </div>
