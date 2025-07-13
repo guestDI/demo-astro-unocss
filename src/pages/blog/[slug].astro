@@ -1,0 +1,40 @@
+---
+import { Astro } from 'astro';
+const { slug } = Astro.params;
+const post = await Astro.glob('./*.md');
+const current = post.find((p) => p.url.endsWith(`${slug}/`));
+if (!current) {
+  throw new Error('Post not found');
+}
+const { Content, frontmatter } = await current;
+---
+
+<html lang="en">
+  <head>
+    <title>{frontmatter.title}</title>
+  </head>
+  <body class="font-sans text-gray-800 bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+      <article class="bg-white rounded-xl shadow-lg p-8">
+        <header class="mb-8 text-center">
+          <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            {frontmatter.title}
+          </h1>
+          <p class="text-gray-600">
+            <time datetime={frontmatter.date}>{frontmatter.date}</time>
+          </p>
+        </header>
+        
+        <div class="prose prose-lg max-w-none">
+          <Content />
+        </div>
+      </article>
+      
+      <div class="mt-8 text-center">
+        <a href="/" class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl">
+          ← Back to home
+        </a>
+      </div>
+    </div>
+  </body>
+</html> 

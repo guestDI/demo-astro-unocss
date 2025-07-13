@@ -1,0 +1,17 @@
+{
+  "name": "astro-islands-unocss",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/react": "^3.0.0",
+    "@unocss/astro": "^0.57.7",
+    "astro": "^4.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "unocss": "^66.3.3"
+  }
+}

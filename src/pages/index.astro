@@ -1,0 +1,84 @@
+---
+import PricingCalculator from '../components/PricingCalculator.jsx';
+import LiveClock from '../components/LiveClock.jsx';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Astro Island Architecture with UnoCSS</title>
+  </head>
+  <body class="font-sans text-gray-800 bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+      <section class="text-center my-12">
+        <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          SuperFast Hosting
+        </h1>
+        <p class="text-xl text-gray-600">The best hosting solution for your business.</p>
+      </section>
+
+      <section class="grid gap-4 my-12">
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h2 class="text-2xl font-semibold mb-4 text-gray-800">Why Choose Us?</h2>
+          <ul class="list-none space-y-3">
+            <li class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span class="text-lg">99.99% Uptime</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <span class="text-lg">Global CDN</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+              <span class="text-lg">24/7 Support</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="my-12">
+        <h2 class="text-3xl font-semibold mb-6 text-center text-gray-800">Static vs Dynamic Rendering in Astro</h2>
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-green-50 rounded-lg p-4 border-l-4 border-green-500">
+              <h3 class="font-bold text-green-800 mb-2">Static Content</h3>
+              <p class="text-green-700">Most of this page is rendered as static HTML at build time for fast load and SEO.</p>
+            </div>
+            <div class="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
+              <h3 class="font-bold text-blue-800 mb-2">Dynamic Islands</h3>
+              <p class="text-blue-700">Interactive components below are loaded as Astro Islands and hydrated on the client.</p>
+            </div>
+          </div>
+          <div class="grid gap-6 md:grid-cols-2">
+            <div class="text-center">
+              <h3 class="font-bold mb-4 text-gray-800">Live Clock (Dynamic Island)</h3>
+              <LiveClock client:only="react" />
+            </div>
+            <div class="text-center">
+              <h3 class="font-bold mb-4 text-gray-800">Pricing Calculator (Dynamic Island)</h3>
+              <PricingCalculator client:load />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="my-12">
+        <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+          <h2 class="text-2xl font-semibold mb-4 text-gray-800">Read our Blog</h2>
+          <a href="/blog/first-post" class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl">
+            Read the first blog post (static Markdown)
+          </a>
+        </div>
+      </section>
+
+      <section class="mt-16 text-center">
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <p class="text-xl italic text-gray-600">"Fastest load times we've ever seen!"</p>
+          <p class="text-sm text-gray-500 mt-2">– Happy Customer</p>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
